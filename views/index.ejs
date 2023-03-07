@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        <h1 style="justify-content: center;">ATN Store</h1>
         <div class="container mt-5">
             <div class="card">
                 <div class="card-body">
@@ -59,6 +60,12 @@
                                     <td><%= quotes[i].Name %></td>
                                     <td><%= quotes[i].Price %></td>
                                     <td><%= quotes[i].Type %></td>
+                                    <td>
+                                        
+                                        <a href="quotes/<%= quotes[i]._id %>">
+                                            <button class="btn-danger">Delete</button>
+                                        </a>
+                                    </td>
                                 </tr>
                             <% } %>
                         </tbody>

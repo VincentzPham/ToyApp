@@ -7,6 +7,7 @@ const app = express();
 
 
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectId
 
 const connectionString = 'mongodb+srv://admin:Abcd1234@cluster0.mnok7jy.mongodb.net/?retryWrites=true&w=majority'
 
@@ -65,12 +66,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             .catch(error => console.error(error))
         })
 
-        app.delete('/quotes/:id', (req, res) => {
+        app.get('/quotes/:id', (req, res) => {
             const quoteId = req.params.id;
             quotesCollection.deleteOne({_id: ObjectId(quoteId)})
                 .then(result => {
-                    console.log(`Deleted quote with ID ${quoteId}`);
-                    res.json(`Deleted quote with ID ${quoteId}`);
+                    res.redirect('/')
                 })
                 .catch(error => console.error(error))
         })
